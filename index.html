@@ -387,19 +387,29 @@
       color: #333
     }
 
-    #btn-show {
+    #btn-show, #btn-lock-draw {
       display: none;
-      margin: 18px auto;
+      margin: 18px 0;
       background: #0d4d2a;
       color: #fff;
       border: none;
       cursor: pointer;
-      padding: 15px 55px;
-      font-size: 17px;
+      padding: 15px 35px;
+      font-size: 15px;
       font-weight: 700;
       border-radius: 30px;
-      letter-spacing: 2px;
-      animation: glow 2s infinite
+      letter-spacing: 1px;
+      animation: glow 2s infinite;
+    }
+
+    #btn-lock-draw {
+      background: #b71c1c;
+      animation: glowRed 2s infinite;
+    }
+
+    @keyframes glowRed {
+      0%, 100% { box-shadow: 0 0 8px rgba(183, 28, 28, .5) }
+      50% { box-shadow: 0 0 22px rgba(183, 28, 28, .9) }
     }
 
     @keyframes glow {
@@ -1291,7 +1301,10 @@
       <div class="dcnt" id="dcnt">Còn 8 cặp chưa bốc</div>
     </div>
     <div class="pairs-grid" id="pairs-out"></div>
-    <div style="text-align:center"><button id="btn-show" onclick="showTourney()">🏆 XEM SƠ ĐỒ GIẢI ĐẤU</button></div>
+    <div style="text-align:center; display:flex; justify-content:center; gap:15px; flex-wrap:wrap">
+      <button id="btn-show" onclick="showTourney()">🏆 XEM SƠ ĐỒ</button>
+      <button id="btn-lock-draw" onclick="lockDraw()">🔒 CHỐT KẾT QUẢ</button>
+    </div>
   </div>
 
   <!-- TOURNAMENT PHASE -->
@@ -1455,6 +1468,7 @@
     var FEMALES = ['Minh chủ tịch', 'Hằng vợ ông tháp giải nhiệt', 'Thủy vợ ông làm nội thất', 'Thu vợ khầy pick', 'An vợ ô bộ đội', 'C Hà vợ a lái máy bay', 'Hiền vợ ông gymer', 'Hương xinh gia lâm'];
     var avM = [...MALES], avF = [...FEMALES];
     var pairs = [], scores = {}, drawCnt = 0, isEditing = false, isAnimating = false;
+    var isLocked = false;
 
     var SCHED = [
       { l: 1, s1: { id: 'a12', t1: 'A1', t2: 'A2' }, s2: { id: 'b12', t1: 'B1', t2: 'B2' } },
@@ -1529,7 +1543,7 @@
         crossOut(document.getElementById('pm' + mIdx), finalM); crossOut(document.getElementById('pf' + fIdx), finalF);
         var card = document.createElement('div'); card.className = 'pair-card ' + (g === 'A' ? 'pca' : 'pcb'); card.innerHTML = '<div class="pnum ' + (g === 'A' ? 'pna' : 'pnb') + '">' + drawCnt + '</div><div class="pinfo"><div class="pnames"><span class="pm">' + finalM + '</span><span style="color:#aaa;margin:0 5px;font-size:11px">+</span><span class="pf">' + finalF + '</span></div><div class="ptag">Bảng ' + g + ' — ' + (g === 'A' ? 'Sân 1' : 'Sân 2') + ' (' + g + (g === 'A' ? drawCnt : drawCnt - 4) + ')</div></div><span class="pbadge ' + (g === 'A' ? 'pba' : 'pbb') + '">BẢNG ' + g + '</span>';
         document.getElementById('pairs-out').appendChild(card);
-        btn.classList.remove('btn-loading'); if (!avM.length) { btn.disabled = true; btn.textContent = '✓ ĐÃ BỐC THĂM XONG'; document.getElementById('dcnt').textContent = 'Đã ghép đủ 8 cặp đôi!'; document.getElementById('btn-show').style.display = 'block'; } else { btn.disabled = false; btn.textContent = '🎲 BỐC THĂM CẶP ' + (drawCnt + 1); document.getElementById('dcnt').textContent = 'Còn ' + avM.length + ' cặp chưa bốc'; }
+        btn.classList.remove('btn-loading'); if (!avM.length) { btn.disabled = true; btn.textContent = '✓ ĐÃ BỐC THĂM XONG'; document.getElementById('dcnt').textContent = 'Đã ghép đủ 8 cặp đôi!'; document.getElementById('btn-show').style.display = 'block'; var btnLock = document.getElementById('btn-lock-draw'); if(btnLock) btnLock.style.display = 'block'; } else { btn.disabled = false; btn.textContent = '🎲 BỐC THĂM CẶP ' + (drawCnt + 1); document.getElementById('dcnt').textContent = 'Còn ' + avM.length + ' cặp chưa bốc'; }
       });
     }
 
@@ -1550,6 +1564,7 @@
         inp.classList.add('si'); inp.classList.remove('sv');
       }
       renderStandings(); updateBK();
+      if(isLocked) saveData();
     }
 
     function matchScore(id, xc) {
@@ -1686,6 +1701,69 @@
       buildBracket(); renderStandings();
     }
     function backDraw() { document.getElementById('tourney').style.display = 'none'; document.getElementById('draw').style.display = 'block'; }
+
+    function lockDraw() {
+      if(!confirm('Bạn có chắc chắn muốn CHỐT kết quả bốc thăm?\n\nSau khi chốt sẽ KHÔNG THỂ BỐC THĂM LẠI. Hệ thống sẽ lưu sơ đồ giải đấu, bạn có thể tải lại trang mà không mất dữ liệu.')) return;
+      isLocked = true;
+      saveData();
+      alert('Đã khóa kết quả bốc thăm! Bạn có thể nhập điểm và hệ thống sẽ tự động lưu.');
+      showTourney();
+      applyLockState();
+    }
+    
+    function saveData() {
+      if(!isLocked) return;
+      var data = {
+        locked: true,
+        pairs: pairs,
+        MALES: MALES,
+        FEMALES: FEMALES,
+        scores: scores,
+        drawCnt: drawCnt
+      };
+      localStorage.setItem('tennis_tour_data', JSON.stringify(data));
+    }
+    
+    function applyLockState() {
+      var bkbtn = document.querySelector('button[onclick="backDraw()"]');
+      if(bkbtn) bkbtn.style.display = 'none';
+      
+      var leg = document.querySelector('.legend');
+      if(!document.getElementById('unlock-btn')) {
+        leg.insertAdjacentHTML('beforeend', '<button id="unlock-btn" class="bkbtn" onclick="unlockDraw()" style="background:#b71c1c;margin-left:8px;padding:8px 12px">🔓 Xóa dữ liệu (Làm mới)</button>');
+      }
+    }
+    
+    function unlockDraw() {
+      if(confirm('CẢNH BÁO: Thao tác này sẽ XÓA TOÀN BỘ kết quả bốc thăm và điểm số hiện tại.\n\nBạn có chắc chắn muốn LÀM MỚI giải đấu?')) {
+        localStorage.removeItem('tennis_tour_data');
+        location.reload();
+      }
+    }
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      var saved = localStorage.getItem('tennis_tour_data');
+      if(saved) {
+        try {
+          var data = JSON.parse(saved);
+          if(data.locked) {
+            isLocked = true;
+            pairs = data.pairs;
+            MALES = data.MALES || MALES;
+            FEMALES = data.FEMALES || FEMALES;
+            scores = data.scores || {};
+            drawCnt = data.drawCnt || 8;
+            avM = []; avF = [];
+            
+            document.getElementById('draw').style.display = 'none';
+            document.getElementById('tourney').style.display = 'block';
+            buildBracket(); 
+            renderStandings();
+            applyLockState();
+          }
+        } catch(e) { console.error(e); }
+      }
+    });
 
   </script>
 </body>
