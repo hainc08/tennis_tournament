@@ -8,8 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;font-size:12px;background:#f0f2f0;min-width:960px}
 #hdr{background:linear-gradient(90deg,#0d4d2a,#1a7a4a 40%,#1a7a4a 60%,#0d4d2a);border-bottom:3px solid #c8f135;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;position:sticky;top:0;z-index:100}
-#hdr .logo{font-size:34px}
-#hdr .ttl{text-align:center}
+#hdr .logo{font-size:34px}#hdr .ttl{text-align:center}
 #hdr .ttl h1{font-size:20px;letter-spacing:3px;color:#c8f135;font-weight:700;text-transform:uppercase}
 #hdr .ttl p{font-size:11px;color:rgba(255,255,255,.75);margin-top:3px}
 #draw{padding:15px;max-width:860px;margin:0 auto}
@@ -48,8 +47,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#f0f2f0;min-width:96
 .pca{background:#e8f5e9;border-color:#1a5c3a}.pcb{background:#fff8e1;border-color:#f9a825}
 .pnum{font-size:22px;font-weight:700}
 .pna{color:#1a5c3a}.pnb{color:#f9a825}
-.pinfo{flex:1}
-.pnames{font-size:14px;font-weight:600}
+.pinfo{flex:1}.pnames{font-size:14px;font-weight:600}
 .pm{color:#1565c0}.pf{color:#c2185b}
 .ptag{font-size:10px;color:#888;margin-top:2px}
 .pbadge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:10px;flex-shrink:0}
@@ -66,54 +64,83 @@ table.bt{border-collapse:collapse;white-space:nowrap;min-width:960px;width:100%}
 table.bt th,table.bt td{border:1px solid #c8e6c9;padding:0;vertical-align:middle}
 table.bt .ch{padding:7px 8px;text-align:center;font-size:12px;font-weight:700;letter-spacing:1px;border-color:#aaa}
 .chl{background:#37474f;color:#fff;width:55px}
-.cha{background:#0d4d2a;color:#fff}.chas{background:#155c32;color:#fff;width:62px}
-.chb{background:#5c1a1a;color:#fff}.chbs{background:#7b2020;color:#fff;width:62px}
-.chbk{background:#4a148c;color:#fff}.chbks{background:#6a1ab8;color:#fff;width:62px}
-.chck{background:#b71c1c;color:#fff}.chcks{background:#c42020;color:#fff;width:62px}
+.cha{background:#0d4d2a;color:#fff}.chas{background:#155c32;color:#fff;width:80px}
+.chb{background:#5c1a1a;color:#fff}.chbs{background:#7b2020;color:#fff;width:80px}
+.chbk{background:#4a148c;color:#fff}.chbks{background:#6a1ab8;color:#fff;width:80px}
+.chck{background:#b71c1c;color:#fff}.chcks{background:#c42020;color:#fff;width:80px}
 .tdl{background:#e8f5e9;text-align:center;width:55px;font-size:14px;font-weight:700;color:#0d4d2a;line-height:1.3;padding:4px 2px}
 .tdt{padding:5px 8px;min-width:145px;background:#fff;height:26px}
 .tdt .sl{font-size:9px;color:#bbb;display:block}
 .tdt .nm{font-weight:700;color:#1a3c1a;font-size:12px;display:block}
 .tdt.btm{border-top:1px dashed #c8e6c9}
-.tds{text-align:center;background:#f0fff0;border-left:2px solid #0d4d2a!important;padding:3px}
-.sp{display:flex;flex-direction:column;align-items:center;gap:1px}
-.sin{width:42px;height:26px;text-align:center;border:1px solid #c8e6c9;border-radius:3px;font-size:14px;font-weight:700;color:#0d4d2a;background:#fff;outline:none}
-.sin:focus{border-color:#0d4d2a;background:#f0fff0}
-.scl{font-size:9px;color:#aaa;font-weight:700}
-.tdb{padding:6px 10px;min-width:160px;background:#f3e5f5;border-color:#ce93d8!important}
+/* ── SCORE TEXT INPUT ── */
+.stw{padding:5px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.st{width:72px;height:30px;text-align:center;border:1.5px solid #c8e6c9;border-radius:5px;font-size:13px;font-weight:700;color:#0d4d2a;background:#fff;outline:none;padding:0 4px;transition:.15s}
+.st:focus{border-color:#0d4d2a;background:#f0fff0;box-shadow:0 0 0 3px rgba(13,77,42,.12)}
+.sv{border-color:#43a047!important;background:#f1f8e9!important;color:#1b5e20!important}
+.si{border-color:#e53935!important;background:#fff5f5!important;color:#c62828!important}
+.st-hint{font-size:9px;color:#aaa;letter-spacing:.5px}
+/* score cells */
+.tds{text-align:center;background:#f0fff0;border-left:2px solid #0d4d2a!important;padding:0}
+.tdb{padding:6px 10px;min-width:165px;background:#f3e5f5;border-color:#ce93d8!important}
 .tdb .bsl{font-size:9px;color:#ab47bc;display:block}
 .tdb .bnm{font-weight:700;color:#4a148c;font-size:12px;display:block}
-.tdbs{text-align:center;background:#f8f0ff;border-left:2px solid #9c27b0!important;padding:3px}
-.sinb{color:#4a148c;border-color:#ce93d8}.sinb:focus{border-color:#9c27b0}
-.tdc{padding:6px 10px;min-width:160px;background:#ffebee;border-color:#ef9a9a!important}
+.tdbs{text-align:center;background:#f8f0ff;border-left:2px solid #9c27b0!important;padding:0}
+.tdc{padding:6px 10px;min-width:165px;background:#ffebee;border-color:#ef9a9a!important}
 .tdc .csl{font-size:9px;color:#e57373;display:block}
 .tdc .cnm{font-weight:700;color:#b71c1c;font-size:12px;display:block}
-.tdcs{text-align:center;background:#fff0f0;border-left:2px solid #c62828!important;padding:3px}
-.sinc{color:#b71c1c;border-color:#ef9a9a}.sinc:focus{border-color:#c62828}
+.tdcs{text-align:center;background:#fff0f0;border-left:2px solid #c62828!important;padding:0}
 .bktop{border-bottom:none!important}.bkbot{border-top:none!important}
 .tdtb{background:#fff5f5}
-.tdsb{background:#fff0f5;border-left:2px solid #c2185b!important}
-.sinbg{color:#5c1a1a;border-color:#f8bbd0}
+.tdsb{background:#fff0f5;border-left:2px solid #c2185b!important;padding:0}
+
+/* ── STANDINGS ── */
 .stgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
-.stcard{background:#fff;border-radius:8px;overflow:hidden;border:1px solid #e0e0e0}
-.sthdr{padding:9px 14px;font-weight:700;font-size:13px;letter-spacing:1px}
+.stcard{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e0e0e0;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.sthdr{padding:10px 14px;font-weight:700;font-size:13px;letter-spacing:1px;display:flex;align-items:center;gap:8px}
 .sthdr-a{background:#0d4d2a;color:#fff}.sthdr-b{background:#5c1a1a;color:#fff}
 .sttbl{width:100%;border-collapse:collapse;font-size:12px}
-.sttbl th{background:#f5f5f5;padding:5px 7px;text-align:center;border:1px solid #e5e5e5;font-size:11px}
-.sttbl td{padding:5px 7px;border:1px solid #eee;text-align:center}
+.sttbl th{background:#f5f5f5;padding:6px 8px;text-align:center;border:1px solid #e5e5e5;font-size:11px;font-weight:700}
+.sttbl td{padding:6px 8px;border:1px solid #eee;text-align:center}
 .sttbl .tdl2{text-align:left;font-weight:600}
-.sttbl tr:nth-child(even) td{background:#fafafa}
-.rk1 td{background:#fff9c4!important}.rk2 td{background:#e8f5e9!important}
-.adv{font-size:9px;background:#c8f135;color:#1a3c0a;padding:1px 4px;border-radius:8px;margin-left:3px}
-.hcd-section{background:#fff;border-top:1px solid #eee;padding:12px}
-.hcd-title{font-size:13px;font-weight:700;color:#666;margin-bottom:10px;letter-spacing:1px}
-.hcd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hcd-card{background:#f5f5f5;border-radius:8px;padding:12px;border:2px solid #ddd}
-.hcd-card-title{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:8px;color:#666}
-.hcd-team{padding:6px 10px;background:#fff;border-radius:6px;font-size:12px;font-weight:600;border:1px solid #e0e0e0}
-.hcd-score{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.rk1 td{background:#fff9c4!important}
+.rk2 td{background:#e8f5e9!important}
+.rk3 td{background:#fafafa}
+.adv{font-size:9px;background:#c8f135;color:#1a3c0a;padding:1px 5px;border-radius:8px;margin-left:4px;font-weight:700}
+.rank-num{font-weight:700;font-size:15px}
 
-/* ═══ SPIN OVERLAY ═══ */
+/* ── BK SECTION (new clean layout) ── */
+.bk-section{background:#fff;border-top:2px solid #e0e0e0;padding:14px}
+.bk-section-title{font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.bk-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.bk-card{border-radius:10px;overflow:hidden;border:2px solid}
+.bk-card-a{border-color:#4a148c}
+.bk-card-b{border-color:#4a148c}
+.bk-card-hdr{padding:8px 12px;font-weight:700;font-size:12px;letter-spacing:1px;display:flex;align-items:center;justify-content:space-between}
+.bk-hdr-purple{background:#4a148c;color:#fff}
+.bk-card-body{background:#f8f0ff;padding:10px 12px}
+.bk-team-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:7px;background:#fff;border:1px solid #e1bee7;margin-bottom:5px}
+.bk-team-badge{font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;background:#4a148c;color:#fff;flex-shrink:0}
+.bk-team-name{font-weight:700;font-size:13px;color:#4a148c;flex:1}
+.bk-score-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px}
+.bk-score-label{font-size:10px;color:#9c27b0;font-weight:700;letter-spacing:1px}
+.vs-divider{text-align:center;font-size:10px;color:#9c27b0;font-weight:700;letter-spacing:2px;margin:4px 0}
+
+.ck-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ck-card{border-radius:10px;overflow:hidden;border:2px solid}
+.ck-card-gold{border-color:#b71c1c}
+.ck-card-bronze{border-color:#78909c}
+.ck-hdr-red{background:#b71c1c;color:#fff}
+.ck-hdr-gray{background:#546e7a;color:#fff}
+.ck-card-body-red{background:#fff0f0;padding:10px 12px}
+.ck-card-body-gray{background:#f5f5f5;padding:10px 12px}
+.ck-team-row{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:7px;background:#fff;border:1px solid #ef9a9a;margin-bottom:5px}
+.ck-team-row-gray{border-color:#cfd8dc}
+.ck-team-name{font-weight:700;font-size:13px;color:#b71c1c;flex:1}
+.ck-team-name-gray{color:#546e7a}
+.ck-score-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:8px}
+
+/* ── SPIN OVERLAY ── */
 #spin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;flex-direction:column}
 #confetti-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 #spin-box{background:#fff;border-radius:24px;padding:32px 44px;text-align:center;min-width:520px;position:relative;z-index:1;border:3px solid #c8f135;box-shadow:0 0 80px rgba(200,241,53,0.35),0 20px 60px rgba(0,0,0,0.5)}
@@ -131,27 +158,14 @@ table.bt .ch{padding:7px 8px;text-align:center;font-size:12px;font-weight:700;le
 .spin-status{font-size:13px;color:#888;margin-bottom:14px;min-height:20px;font-weight:600}
 .spin-bar-wrap{background:#e8e8e8;border-radius:10px;height:8px;overflow:hidden;width:100%}
 #spin-progress{height:100%;width:0%;border-radius:10px;background:linear-gradient(90deg,#0d4d2a,#c8f135);transition:background .5s}
-
-/* Reveal animation */
-@keyframes revealBounce{
-  0%{transform:scale(.3) translateY(20px);opacity:0;filter:blur(6px)}
-  55%{transform:scale(1.18) translateY(-4px);opacity:1;filter:blur(0)}
-  75%{transform:scale(.94) translateY(2px)}
-  88%{transform:scale(1.04)}
-  100%{transform:scale(1) translateY(0);opacity:1;filter:blur(0)}
-}
+@keyframes revealBounce{0%{transform:scale(.3) translateY(20px);opacity:0;filter:blur(6px)}55%{transform:scale(1.18) translateY(-4px);opacity:1;filter:blur(0)}75%{transform:scale(.94) translateY(2px)}88%{transform:scale(1.04)}100%{transform:scale(1) translateY(0);opacity:1;filter:blur(0)}}
 .name-revealed{animation:revealBounce .65s cubic-bezier(.22,.61,.36,1) forwards!important;filter:none!important}
-
-/* Dot pulse while loading */
 @keyframes dotPulse{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
 .dot-pulse{display:inline-flex;gap:5px;margin-left:4px}
 .dot-pulse span{width:6px;height:6px;background:#0d4d2a;border-radius:50%;display:inline-block;animation:dotPulse 1.4s infinite ease-in-out both}
-.dot-pulse span:nth-child(2){animation-delay:.2s}
-.dot-pulse span:nth-child(3){animation-delay:.4s}
-
-/* Btn loading state */
+.dot-pulse span:nth-child(2){animation-delay:.2s}.dot-pulse span:nth-child(3){animation-delay:.4s}
 .btn-loading{position:relative;overflow:hidden}
-.btn-loading::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.4) 50%,transparent 100%);animation:shimmer 1s infinite}
+.btn-loading::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 1s infinite}
 @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 </style>
 </head>
@@ -166,33 +180,23 @@ table.bt .ch{padding:7px 8px;text-align:center;font-size:12px;font-weight:700;le
   <div class="logo">🏓</div>
 </div>
 
-<!-- ░░░ SPIN OVERLAY ░░░ -->
+<!-- SPIN OVERLAY -->
 <div id="spin-overlay">
   <canvas id="confetti-canvas"></canvas>
   <div id="spin-box">
     <div class="spin-eyebrow">🎱 Bốc thăm</div>
     <div class="spin-cap-num" id="spin-cap-num">CẶP SỐ 1</div>
     <div class="spin-drums">
-      <div class="drum drum-m">
-        <div class="drum-label drum-label-m">♂ VĐV NAM</div>
-        <div class="drum-name drum-name-m" id="spin-m">...</div>
-      </div>
+      <div class="drum drum-m"><div class="drum-label drum-label-m">♂ VĐV NAM</div><div class="drum-name drum-name-m" id="spin-m">...</div></div>
       <div class="spin-plus">+</div>
-      <div class="drum drum-f">
-        <div class="drum-label drum-label-f">♀ VĐV NỮ</div>
-        <div class="drum-name drum-name-f" id="spin-f">...</div>
-      </div>
+      <div class="drum drum-f"><div class="drum-label drum-label-f">♀ VĐV NỮ</div><div class="drum-name drum-name-f" id="spin-f">...</div></div>
     </div>
-    <div class="spin-status" id="spin-status">
-      Đang quay<span class="dot-pulse"><span></span><span></span><span></span></span>
-    </div>
-    <div class="spin-bar-wrap">
-      <div id="spin-progress"></div>
-    </div>
+    <div class="spin-status" id="spin-status">Đang quay<span class="dot-pulse"><span></span><span></span><span></span></span></div>
+    <div class="spin-bar-wrap"><div id="spin-progress"></div></div>
   </div>
 </div>
 
-<!-- ░░░ DRAW ░░░ -->
+<!-- DRAW PHASE -->
 <div id="draw">
   <div class="dh">
     <h2>🎱 BỐC THĂM GHÉP CẶP NAM – NỮ</h2>
@@ -205,14 +209,8 @@ table.bt .ch{padding:7px 8px;text-align:center;font-size:12px;font-weight:700;le
     <span class="edit-hint" id="edit-hint"></span>
   </div>
   <div class="pgrid" id="pgrid">
-    <div class="pcard">
-      <div class="pcard-hdr mhdr">♂ VĐV NAM (8 NGƯỜI)</div>
-      <div class="pcard-body" id="mlist"></div>
-    </div>
-    <div class="pcard">
-      <div class="pcard-hdr fhdr">♀ VĐV NỮ (8 NGƯỜI)</div>
-      <div class="pcard-body" id="flist"></div>
-    </div>
+    <div class="pcard"><div class="pcard-hdr mhdr">♂ VĐV NAM (8 NGƯỜI)</div><div class="pcard-body" id="mlist"></div></div>
+    <div class="pcard"><div class="pcard-hdr fhdr">♀ VĐV NỮ (8 NGƯỜI)</div><div class="pcard-body" id="flist"></div></div>
   </div>
   <div class="dbtn-wrap">
     <button id="btn-draw" onclick="doDrawPair()">🎲 BỐC THĂM CẶP 1</button>
@@ -222,28 +220,134 @@ table.bt .ch{padding:7px 8px;text-align:center;font-size:12px;font-weight:700;le
   <div style="text-align:center"><button id="btn-show" onclick="showTourney()">🏆 XEM SƠ ĐỒ GIẢI ĐẤU</button></div>
 </div>
 
-<!-- ░░░ TOURNAMENT ░░░ -->
+<!-- TOURNAMENT PHASE -->
 <div id="tourney">
   <div class="legend">
     <div class="li"><div class="ld" style="background:#0d4d2a"></div>&nbsp;Bảng A (Sân 1)</div>
     <div class="li"><div class="ld" style="background:#5c1a1a"></div>&nbsp;Bảng B (Sân 2)</div>
     <div class="li"><div class="ld" style="background:#4a148c"></div>&nbsp;Bán Kết</div>
     <div class="li"><div class="ld" style="background:#b71c1c"></div>&nbsp;Chung Kết</div>
-    <div style="margin-left:auto;font-size:11px;color:#0d4d2a;font-weight:700">Thắng=2đ | Thua=0đ | XH: Điểm → Hiệu số</div>
+    <div style="color:#555;font-size:11px;font-weight:700">
+      📝 Nhập tỷ số dạng <span style="background:#e8f5e9;color:#0d4d2a;padding:1px 6px;border-radius:4px;font-family:monospace">11:7</span>
+      &nbsp;—&nbsp; Bảng xếp hạng tự cập nhật
+    </div>
     <button class="bkbtn" onclick="backDraw()">← Bốc thăm</button>
   </div>
+
+  <!-- BRACKET TABLE -->
   <div class="bwrap"><table class="bt" id="btable"></table></div>
+
+  <!-- STANDINGS (auto-update) -->
   <div class="stgrid" id="standings"></div>
-  <div class="hcd-section">
-    <div class="hcd-title">🥉 TRANH HẠNG BA — SÂN 1 (song song Chung Kết)</div>
-    <div class="hcd-grid">
-      <div class="hcd-card"><div class="hcd-card-title">Thua Bán Kết 1</div><div class="hcd-team" id="hcd-t1">Thua BK Sân 1</div></div>
-      <div class="hcd-card"><div class="hcd-card-title">Thua Bán Kết 2</div><div class="hcd-team" id="hcd-t2">Thua BK Sân 2</div></div>
+
+  <!-- BK + CK CLEAN SECTION -->
+  <div class="bk-section">
+    <div class="bk-section-title">
+      <span style="background:#4a148c;color:#fff;padding:3px 10px;border-radius:6px;font-size:11px">BÁN KẾT</span>
+      <span style="color:#4a148c">— Tự động lấy #1 và #2 mỗi bảng sau vòng bảng</span>
     </div>
-    <div class="hcd-score">
-      <input class="sin" type="number" min="0" max="99" placeholder="—" oninput="setScore('hcd',1,this.value)" style="color:#666;border-color:#bbb">
-      <span style="font-size:18px;color:#666;font-weight:700">:</span>
-      <input class="sin" type="number" min="0" max="99" placeholder="—" oninput="setScore('hcd',2,this.value)" style="color:#666;border-color:#bbb">
+    <div class="bk-grid">
+      <!-- BK1 -->
+      <div class="bk-card bk-card-a">
+        <div class="bk-card-hdr bk-hdr-purple">
+          <span>BÁN KẾT 1 — SÂN 1</span>
+          <span style="font-size:10px;font-weight:400">#1 Bảng A vs #2 Bảng B</span>
+        </div>
+        <div class="bk-card-body">
+          <div class="bk-team-row">
+            <span class="bk-team-badge">#1A</span>
+            <span class="bk-team-name" id="bk1-team1">Chờ kết quả vòng bảng...</span>
+          </div>
+          <div class="vs-divider">— VS —</div>
+          <div class="bk-team-row">
+            <span class="bk-team-badge">#2B</span>
+            <span class="bk-team-name" id="bk1-team2">Chờ kết quả vòng bảng...</span>
+          </div>
+          <div class="bk-score-row">
+            <span class="bk-score-label">TỶ SỐ:</span>
+            <input class="st" type="text" placeholder="11:7" data-id="bk1" oninput="ps(this)" onclick="this.select()" style="width:80px;height:34px;font-size:15px;color:#4a148c;border-color:#ce93d8">
+          </div>
+          <div style="text-align:center;margin-top:6px;font-size:11px;color:#9c27b0" id="bk1-winner-label"></div>
+        </div>
+      </div>
+      <!-- BK2 -->
+      <div class="bk-card bk-card-b">
+        <div class="bk-card-hdr bk-hdr-purple">
+          <span>BÁN KẾT 2 — SÂN 2</span>
+          <span style="font-size:10px;font-weight:400">#1 Bảng B vs #2 Bảng A</span>
+        </div>
+        <div class="bk-card-body">
+          <div class="bk-team-row">
+            <span class="bk-team-badge">#1B</span>
+            <span class="bk-team-name" id="bk2-team1">Chờ kết quả vòng bảng...</span>
+          </div>
+          <div class="vs-divider">— VS —</div>
+          <div class="bk-team-row">
+            <span class="bk-team-badge">#2A</span>
+            <span class="bk-team-name" id="bk2-team2">Chờ kết quả vòng bảng...</span>
+          </div>
+          <div class="bk-score-row">
+            <span class="bk-score-label">TỶ SỐ:</span>
+            <input class="st" type="text" placeholder="11:7" data-id="bk2" oninput="ps(this)" onclick="this.select()" style="width:80px;height:34px;font-size:15px;color:#4a148c;border-color:#ce93d8">
+          </div>
+          <div style="text-align:center;margin-top:6px;font-size:11px;color:#9c27b0" id="bk2-winner-label"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CK + HCĐ -->
+    <div class="bk-section-title" style="margin-top:4px">
+      <span style="background:#b71c1c;color:#fff;padding:3px 10px;border-radius:6px;font-size:11px">🏆 CHUNG KẾT</span>
+      <span style="background:#546e7a;color:#fff;padding:3px 10px;border-radius:6px;font-size:11px;margin-left:8px">🥉 TRANH HẠNG BA</span>
+      <span style="color:#666;font-size:11px">— Tự động điền sau bán kết</span>
+    </div>
+    <div class="ck-grid">
+      <!-- CK -->
+      <div class="ck-card ck-card-gold">
+        <div class="bk-card-hdr ck-hdr-red">
+          <span>🏆 CHUNG KẾT — SÂN 2</span>
+          <span style="font-size:10px;font-weight:400">Thắng BK1 vs Thắng BK2</span>
+        </div>
+        <div class="ck-card-body-red">
+          <div class="ck-team-row">
+            <span class="bk-team-badge" style="background:#b71c1c">W1</span>
+            <span class="ck-team-name" id="ck-team1">Thắng Bán Kết 1</span>
+          </div>
+          <div class="vs-divider" style="color:#e57373">— VS —</div>
+          <div class="ck-team-row">
+            <span class="bk-team-badge" style="background:#b71c1c">W2</span>
+            <span class="ck-team-name" id="ck-team2">Thắng Bán Kết 2</span>
+          </div>
+          <div class="ck-score-row">
+            <span class="bk-score-label" style="color:#c62828">TỶ SỐ:</span>
+            <input class="st" type="text" placeholder="11:7" data-id="ck" oninput="ps(this)" onclick="this.select()" style="width:80px;height:34px;font-size:15px;color:#b71c1c;border-color:#ef9a9a">
+          </div>
+          <div style="text-align:center;margin-top:6px;font-size:12px;color:#b71c1c;font-weight:700" id="ck-winner-label"></div>
+        </div>
+      </div>
+      <!-- HCĐ -->
+      <div class="ck-card ck-card-bronze">
+        <div class="bk-card-hdr ck-hdr-gray">
+          <span>🥉 TRANH HẠNG BA — SÂN 1</span>
+          <span style="font-size:10px;font-weight:400">Thua BK1 vs Thua BK2</span>
+        </div>
+        <div class="ck-card-body-gray">
+          <div class="ck-team-row ck-team-row-gray">
+            <span class="bk-team-badge" style="background:#546e7a">L1</span>
+            <span class="ck-team-name ck-team-name-gray" id="hcd-team1">Thua Bán Kết 1</span>
+          </div>
+          <div class="vs-divider" style="color:#90a4ae">— VS —</div>
+          <div class="ck-team-row ck-team-row-gray">
+            <span class="bk-team-badge" style="background:#546e7a">L2</span>
+            <span class="ck-team-name ck-team-name-gray" id="hcd-team2">Thua Bán Kết 2</span>
+          </div>
+          <div class="ck-score-row">
+            <span class="bk-score-label" style="color:#546e7a">TỶ SỐ:</span>
+            <input class="st" type="text" placeholder="11:7" data-id="hcd" oninput="ps(this)" onclick="this.select()" style="width:80px;height:34px;font-size:15px;color:#546e7a;border-color:#b0bec5">
+          </div>
+          <div style="text-align:center;margin-top:6px;font-size:12px;color:#546e7a;font-weight:700" id="hcd-winner-label"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -267,309 +371,159 @@ var GA=SCHED.map(function(r){return r.s1;}),GB=SCHED.map(function(r){return r.s2
 
 /* ── AUDIO ── */
 var audioCtx=null;
-function getACtx(){
-  if(!audioCtx){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}}
-  return audioCtx;
-}
-function playTick(freq,vol,dur){
-  var c=getACtx();if(!c)return;
-  var o=c.createOscillator(),g=c.createGain();
-  o.connect(g);g.connect(c.destination);
-  o.type='sine';o.frequency.value=freq||800;
-  g.gain.setValueAtTime(vol||0.12,c.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+(dur||0.07));
-  o.start(c.currentTime);o.stop(c.currentTime+(dur||0.07));
-}
-function playFanfare(){
-  var c=getACtx();if(!c)return;
-  var seqs=[[523,.0,.15],[659,.12,.15],[784,.22,.2],[523,.32,.1],[659,.4,.1],[1047,.48,.4]];
-  seqs.forEach(function(s){
-    var o=c.createOscillator(),g=c.createGain();
-    o.connect(g);g.connect(c.destination);
-    o.type='triangle';o.frequency.value=s[0];
-    var t=c.currentTime+s[1];
-    g.gain.setValueAtTime(0,t);
-    g.gain.linearRampToValueAtTime(0.22,t+0.04);
-    g.gain.exponentialRampToValueAtTime(0.001,t+s[2]);
-    o.start(t);o.stop(t+s[2]+0.05);
-  });
-}
+function getACtx(){if(!audioCtx){try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}}return audioCtx;}
+function playTick(freq,vol,dur){var c=getACtx();if(!c)return;var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='sine';o.frequency.value=freq||800;g.gain.setValueAtTime(vol||0.12,c.currentTime);g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+(dur||0.07));o.start(c.currentTime);o.stop(c.currentTime+(dur||0.07));}
+function playFanfare(){var c=getACtx();if(!c)return;var seqs=[[523,.0,.15],[659,.12,.15],[784,.22,.2],[523,.32,.1],[659,.4,.1],[1047,.48,.4]];seqs.forEach(function(s){var o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.type='triangle';o.frequency.value=s[0];var t=c.currentTime+s[1];g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(0.22,t+0.04);g.gain.exponentialRampToValueAtTime(0.001,t+s[2]);o.start(t);o.stop(t+s[2]+0.05);});}
 
 /* ── CONFETTI ── */
-function launchConfetti(){
-  var canvas=document.getElementById('confetti-canvas');
-  canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-  var ctx=canvas.getContext('2d');
-  var cols=['#c8f135','#1a7a4a','#f9a825','#e91e63','#2196f3','#ff5722','#9c27b0','#00bcd4','#ff9800'];
-  var particles=[];
-  var cx=window.innerWidth/2,cy=window.innerHeight*0.42;
-  for(var i=0;i<160;i++){
-    var angle=Math.random()*Math.PI*2;
-    var speed=Math.random()*14+4;
-    particles.push({
-      x:cx+(Math.random()-0.5)*60,y:cy,
-      vx:Math.cos(angle)*speed*(0.6+Math.random()*.8),
-      vy:Math.sin(angle)*speed*(0.6+Math.random()*.8)-6,
-      size:Math.random()*10+4,
-      color:cols[Math.floor(Math.random()*cols.length)],
-      rot:Math.random()*360,
-      rotV:(Math.random()-.5)*18,
-      gravity:0.45,alpha:1,
-      shape:Math.random()>.5?'rect':'circle'
-    });
-  }
-  var raf;
-  function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    var alive=false;
-    particles.forEach(function(p){
-      if(p.alpha>0.015){
-        alive=true;
-        p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;
-        p.vx*=0.99;p.rot+=p.rotV;p.alpha-=0.013;
-        ctx.save();ctx.globalAlpha=Math.max(0,p.alpha);
-        ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
-        ctx.fillStyle=p.color;
-        if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.size/2,0,Math.PI*2);ctx.fill();}
-        else{ctx.fillRect(-p.size/2,-p.size/3,p.size,p.size*.55);}
-        ctx.restore();
-      }
-    });
-    if(alive)raf=requestAnimationFrame(draw);
-    else ctx.clearRect(0,0,canvas.width,canvas.height);
-  }
-  draw();
-  setTimeout(function(){cancelAnimationFrame(raf);ctx.clearRect(0,0,canvas.width,canvas.height);},4000);
-}
+function launchConfetti(){var canvas=document.getElementById('confetti-canvas');canvas.width=window.innerWidth;canvas.height=window.innerHeight;var ctx=canvas.getContext('2d');var cols=['#c8f135','#1a7a4a','#f9a825','#e91e63','#2196f3','#ff5722','#9c27b0','#00bcd4','#ff9800'];var particles=[];var cx=window.innerWidth/2,cy=window.innerHeight*0.42;for(var i=0;i<160;i++){var angle=Math.random()*Math.PI*2,speed=Math.random()*14+4;particles.push({x:cx+(Math.random()-.5)*60,y:cy,vx:Math.cos(angle)*speed*(0.6+Math.random()*.8),vy:Math.sin(angle)*speed*(0.6+Math.random()*.8)-6,size:Math.random()*10+4,color:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rotV:(Math.random()-.5)*18,gravity:0.45,alpha:1,shape:Math.random()>.5?'rect':'circle'});}var raf;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);var alive=false;particles.forEach(function(p){if(p.alpha>0.015){alive=true;p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.vx*=0.99;p.rot+=p.rotV;p.alpha-=0.013;ctx.save();ctx.globalAlpha=Math.max(0,p.alpha);ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.color;if(p.shape==='circle'){ctx.beginPath();ctx.arc(0,0,p.size/2,0,Math.PI*2);ctx.fill();}else{ctx.fillRect(-p.size/2,-p.size/3,p.size,p.size*.55);}ctx.restore();}});if(alive)raf=requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height);}draw();setTimeout(function(){cancelAnimationFrame(raf);ctx.clearRect(0,0,canvas.width,canvas.height);},4000);}
 
-/* ── SPIN ANIMATION ── */
-function runSpin(finalM,finalF,onDone){
-  var overlay=document.getElementById('spin-overlay');
-  var mEl=document.getElementById('spin-m'),fEl=document.getElementById('spin-f');
-  var prog=document.getElementById('spin-progress'),status=document.getElementById('spin-status');
-  var capNum=document.getElementById('spin-cap-num');
-  capNum.textContent='CẶP SỐ '+(drawCnt+1);
-  prog.style.width='0%';prog.style.background='linear-gradient(90deg,#0d4d2a,#c8f135)';
-  status.innerHTML='Đang quay<span class="dot-pulse"><span></span><span></span><span></span></span>';
-  mEl.className='drum-name drum-name-m';fEl.className='drum-name drum-name-f';
-  mEl.style.filter='blur(3px)';fEl.style.filter='blur(3px)';
-  mEl.textContent='?';fEl.textContent='?';
-  overlay.style.display='flex';
-
-  /* Phase config: [duration_ms, interval_ms, blur_px, freq] */
-  var phases=[[1100,55,3,900],[800,110,2,700],[700,220,1,550],[500,420,0,400]];
-  var phase=0,pStart=Date.now(),totalMs=3100+500,startT=Date.now();
-  var timer=null;
-
-  function tick(){
-    var now=Date.now();
-    var elapsed=now-startT;
-    var pct=Math.min(99,elapsed/totalMs*100);
-    prog.style.width=pct+'%';
-
-    if(phase<3&&now-pStart>=phases[phase][0]){
-      phase++;pStart=now;
-      clearInterval(timer);
-      var blur=phases[phase][2];
-      mEl.style.filter=blur?'blur('+blur+'px)':'none';
-      fEl.style.filter=blur?'blur('+blur+'px)':'none';
-      if(phase===3){
-        status.textContent='Sắp ra kết quả...';
-      }
-      if(phase<4){timer=setInterval(tick,phases[phase][1]);}
-      return;
-    }
-    if(phase<3){
-      /* random names from all */
-      var rm=MALES[Math.floor(Math.random()*MALES.length)];
-      var rf=FEMALES[Math.floor(Math.random()*FEMALES.length)];
-      mEl.textContent=rm;fEl.textContent=rf;
-      playTick(phases[phase][3],0.06+phase*0.01,0.06);
-    } else {
-      /* slow phase — cycle through available + final */
-      var pool_m=avM.length>1?avM:[finalM];
-      var pool_f=avF.length>1?avF:[finalF];
-      var rm2=pool_m[Math.floor(Math.random()*pool_m.length)];
-      var rf2=pool_f[Math.floor(Math.random()*pool_f.length)];
-      mEl.textContent=rm2;fEl.textContent=rf2;
-      playTick(phases[phase][3],0.09,0.08);
-      /* after a few slow ticks, reveal */
-      var phaseElapsed=now-pStart;
-      if(phaseElapsed>=phases[phase][0]){
-        clearInterval(timer);
-        /* REVEAL */
-        mEl.style.filter='none';fEl.style.filter='none';
-        mEl.textContent=finalM;fEl.textContent=finalF;
-        mEl.className='drum-name drum-name-m name-revealed';
-        fEl.className='drum-name drum-name-f name-revealed';
-        prog.style.width='100%';
-        prog.style.background='linear-gradient(90deg,#c8f135,#0d4d2a)';
-        status.innerHTML='🎉 &nbsp;<span style="color:#0d4d2a;font-size:15px">'+finalM+'</span>&nbsp; + &nbsp;<span style="color:#c2185b;font-size:15px">'+finalF+'</span>&nbsp; 🎉';
-        playFanfare();
-        setTimeout(launchConfetti,200);
-        setTimeout(function(){
-          overlay.style.display='none';
-          onDone();
-        },2200);
-      }
-    }
-  }
-  timer=setInterval(tick,phases[0][1]);
-}
+/* ── SPIN ── */
+function runSpin(finalM,finalF,onDone){var overlay=document.getElementById('spin-overlay');var mEl=document.getElementById('spin-m'),fEl=document.getElementById('spin-f');var prog=document.getElementById('spin-progress'),status=document.getElementById('spin-status');var capNum=document.getElementById('spin-cap-num');capNum.textContent='CẶP SỐ '+(drawCnt+1);prog.style.width='0%';prog.style.background='linear-gradient(90deg,#0d4d2a,#c8f135)';status.innerHTML='Đang quay<span class="dot-pulse"><span></span><span></span><span></span></span>';mEl.className='drum-name drum-name-m';fEl.className='drum-name drum-name-f';mEl.style.filter='blur(3px)';fEl.style.filter='blur(3px)';mEl.textContent='?';fEl.textContent='?';overlay.style.display='flex';var phases=[[1100,55,3,900],[800,110,2,700],[700,220,1,550],[500,420,0,400]];var phase=0,pStart=Date.now(),totalMs=3100+500,startT=Date.now();var timer=null;function tick(){var now=Date.now();var elapsed=now-startT;var pct=Math.min(99,elapsed/totalMs*100);prog.style.width=pct+'%';if(phase<3&&now-pStart>=phases[phase][0]){phase++;pStart=now;clearInterval(timer);var blur=phases[phase][2];mEl.style.filter=blur?'blur('+blur+'px)':'none';fEl.style.filter=blur?'blur('+blur+'px)':'none';if(phase===3){status.textContent='Sắp ra kết quả...';}if(phase<4){timer=setInterval(tick,phases[phase][1]);}return;}if(phase<3){var rm=MALES[Math.floor(Math.random()*MALES.length)],rf=FEMALES[Math.floor(Math.random()*FEMALES.length)];mEl.textContent=rm;fEl.textContent=rf;playTick(phases[phase][3],0.06+phase*0.01,0.06);}else{var pool_m=avM.length>1?avM:[finalM],pool_f=avF.length>1?avF:[finalF];mEl.textContent=pool_m[Math.floor(Math.random()*pool_m.length)];fEl.textContent=pool_f[Math.floor(Math.random()*pool_f.length)];playTick(phases[phase][3],0.09,0.08);var phaseElapsed=now-pStart;if(phaseElapsed>=phases[phase][0]){clearInterval(timer);mEl.style.filter='none';fEl.style.filter='none';mEl.textContent=finalM;fEl.textContent=finalF;mEl.className='drum-name drum-name-m name-revealed';fEl.className='drum-name drum-name-f name-revealed';prog.style.width='100%';prog.style.background='linear-gradient(90deg,#c8f135,#0d4d2a)';status.innerHTML='🎉 &nbsp;<span style="color:#0d4d2a;font-size:15px">'+finalM+'</span>&nbsp;+&nbsp;<span style="color:#c2185b;font-size:15px">'+finalF+'</span>&nbsp; 🎉';playFanfare();setTimeout(launchConfetti,200);setTimeout(function(){overlay.style.display='none';onDone();},2200);}};}timer=setInterval(tick,phases[0][1]);}
 
 /* ── PLAYER LISTS ── */
-function renderLists(){
-  var ml=document.getElementById('mlist'),fl=document.getElementById('flist');
-  ml.innerHTML=MALES.map(function(n,i){
-    var drawn=avM.indexOf(n)<0&&drawCnt>0;
-    return '<div class="pi '+(drawn?'pid':'pim')+'" id="pm'+i+'">'
-      +'<span class="picon '+(drawn?'icond':'iconm')+'">'+(i+1)+'</span>'
-      +(drawn?'<span class="pname-drawn">'+n+'</span>'
-        :'<input class="pname-input" id="minput'+i+'" type="text" value="'+n+'" readonly '
-          +'onchange="updateName('m','+i+',this.value)" '
-          +'onfocus="this.classList.add('m-editing')" '
-          +'onblur="this.classList.remove('m-editing')">'
-          +'<span class="pedit-icon" onclick="editName('m','+i+')">✏️</span>')
-      +'</div>';
-  }).join('');
-  fl.innerHTML=FEMALES.map(function(n,i){
-    var drawn=avF.indexOf(n)<0&&drawCnt>0;
-    return '<div class="pi '+(drawn?'pid':'pif')+'" id="pf'+i+'">'
-      +'<span class="picon '+(drawn?'icond':'iconf')+'">'+(i+1)+'</span>'
-      +(drawn?'<span class="pname-drawn">'+n+'</span>'
-        :'<input class="pname-input" id="finput'+i+'" type="text" value="'+n+'" readonly '
-          +'onchange="updateName('f','+i+',this.value)" '
-          +'onfocus="this.classList.add('f-editing')" '
-          +'onblur="this.classList.remove('f-editing')">'
-          +'<span class="pedit-icon" onclick="editName('f','+i+')">✏️</span>')
-      +'</div>';
-  }).join('');
-}
+function renderLists(){var ml=document.getElementById('mlist'),fl=document.getElementById('flist');ml.innerHTML=MALES.map(function(n,i){var drawn=avM.indexOf(n)<0&&drawCnt>0;return'<div class="pi '+(drawn?'pid':'pim')+'" id="pm'+i+'"><span class="picon '+(drawn?'icond':'iconm')+'">'+(i+1)+'</span>'+(drawn?'<span class="pname-drawn">'+n+'</span>':'<input class="pname-input" id="minput'+i+'" type="text" value="'+n+'" readonly onchange="updateName(\'m\','+i+',this.value)" onfocus="this.classList.add(\'m-editing\')" onblur="this.classList.remove(\'m-editing\')"><span class="pedit-icon" onclick="editName(\'m\','+i+')">✏️</span>')+'</div>';}).join('');fl.innerHTML=FEMALES.map(function(n,i){var drawn=avF.indexOf(n)<0&&drawCnt>0;return'<div class="pi '+(drawn?'pid':'pif')+'" id="pf'+i+'"><span class="picon '+(drawn?'icond':'iconf')+'">'+(i+1)+'</span>'+(drawn?'<span class="pname-drawn">'+n+'</span>':'<input class="pname-input" id="finput'+i+'" type="text" value="'+n+'" readonly onchange="updateName(\'f\','+i+',this.value)" onfocus="this.classList.add(\'f-editing\')" onblur="this.classList.remove(\'f-editing\')"><span class="pedit-icon" onclick="editName(\'f\','+i+')">✏️</span>')+'</div>';}).join('');}
 renderLists();
 
-function toggleEdit(){
-  if(drawCnt>0){alert('Không thể sửa tên sau khi đã bắt đầu bốc thăm!');return;}
-  isEditing=!isEditing;
-  document.getElementById('btn-lock').style.display=isEditing?'none':'inline-block';
-  document.getElementById('btn-edit').style.display=isEditing?'inline-block':'none';
-  document.getElementById('edit-hint').textContent=isEditing?'💡 Click vào tên để sửa':'';
-  document.getElementById('pgrid').className=isEditing?'pgrid editing-mode':'pgrid';
-  var inputs=document.querySelectorAll('.pname-input');
-  inputs.forEach(function(inp){
-    if(isEditing){inp.removeAttribute('readonly');inp.classList.add('editing');}
-    else{inp.setAttribute('readonly','');inp.classList.remove('editing','m-editing','f-editing');}
-  });
-}
-function editName(g,i){
-  if(!isEditing)return;
-  var inp=document.getElementById((g==='m'?'m':'f')+'input'+i);
-  if(inp){inp.focus();inp.select();}
-}
-function updateName(g,i,val){
-  val=val.trim();if(!val)return;
-  if(g==='m'){var old=MALES[i];MALES[i]=val;var ai=avM.indexOf(old);if(ai>=0)avM[ai]=val;}
-  else{var old=FEMALES[i];FEMALES[i]=val;var ai=avF.indexOf(old);if(ai>=0)avF[ai]=val;}
-}
+function toggleEdit(){if(drawCnt>0){alert('Không thể sửa tên sau khi đã bắt đầu bốc thăm!');return;}isEditing=!isEditing;document.getElementById('btn-lock').style.display=isEditing?'none':'inline-block';document.getElementById('btn-edit').style.display=isEditing?'inline-block':'none';document.getElementById('edit-hint').textContent=isEditing?'💡 Click vào tên để sửa':'';document.getElementById('pgrid').className=isEditing?'pgrid editing-mode':'pgrid';var inputs=document.querySelectorAll('.pname-input');inputs.forEach(function(inp){if(isEditing){inp.removeAttribute('readonly');inp.classList.add('editing');}else{inp.setAttribute('readonly','');inp.classList.remove('editing','m-editing','f-editing');}});}
+function editName(g,i){if(!isEditing)return;var inp=document.getElementById((g==='m'?'m':'f')+'input'+i);if(inp){inp.focus();inp.select();}}
+function updateName(g,i,val){val=val.trim();if(!val)return;if(g==='m'){var old=MALES[i];MALES[i]=val;var ai=avM.indexOf(old);if(ai>=0)avM[ai]=val;}else{var old=FEMALES[i];FEMALES[i]=val;var ai=avF.indexOf(old);if(ai>=0)avF[ai]=val;}}
 
 /* ── DRAW ── */
-function pairName(slot){
-  var g=slot[0],n=parseInt(slot[1])-1,idx=g==='A'?n:4+n;
-  if(idx>=pairs.length)return'Đôi '+slot;
-  var p=pairs[idx];return p.m+' & '+p.f;
+function pairName(slot){var g=slot[0],n=parseInt(slot[1])-1,idx=g==='A'?n:4+n;if(idx>=pairs.length)return'Đôi '+slot;var p=pairs[idx];return p.m+' & '+p.f;}
+
+function doDrawPair(){if(isAnimating||!avM.length)return;if(isEditing)toggleEdit();var mi=Math.floor(Math.random()*avM.length),fi=Math.floor(Math.random()*avF.length);var finalM=avM[mi],finalF=avF[fi];var mIdx=MALES.indexOf(finalM),fIdx=FEMALES.indexOf(finalF);var btn=document.getElementById('btn-draw');btn.disabled=true;btn.classList.add('btn-loading');isAnimating=true;
+runSpin(finalM,finalF,function(){isAnimating=false;drawCnt++;var g=drawCnt<=4?'A':'B';avM.splice(mi,1);avF.splice(fi,1);pairs.push({num:drawCnt,m:finalM,f:finalF,g:g,mi:mIdx,fi:fIdx});
+function crossOut(el,name){if(!el)return;el.className='pi pid';var ic=el.querySelector('.picon');if(ic)ic.className='picon icond';var inp=el.querySelector('input'),ei=el.querySelector('.pedit-icon');if(inp)el.removeChild(inp);if(ei)el.removeChild(ei);var sp=document.createElement('span');sp.className='pname-drawn';sp.textContent=name;el.appendChild(sp);}
+crossOut(document.getElementById('pm'+mIdx),finalM);crossOut(document.getElementById('pf'+fIdx),finalF);
+var card=document.createElement('div');card.className='pair-card '+(g==='A'?'pca':'pcb');card.innerHTML='<div class="pnum '+(g==='A'?'pna':'pnb')+'">'+drawCnt+'</div><div class="pinfo"><div class="pnames"><span class="pm">'+finalM+'</span><span style="color:#aaa;margin:0 5px;font-size:11px">+</span><span class="pf">'+finalF+'</span></div><div class="ptag">Bảng '+g+' — '+(g==='A'?'Sân 1':'Sân 2')+' ('+g+(g==='A'?drawCnt:drawCnt-4)+')</div></div><span class="pbadge '+(g==='A'?'pba':'pbb')+'">BẢNG '+g+'</span>';
+document.getElementById('pairs-out').appendChild(card);
+btn.classList.remove('btn-loading');if(!avM.length){btn.disabled=true;btn.textContent='✓ ĐÃ BỐC THĂM XONG';document.getElementById('dcnt').textContent='Đã ghép đủ 8 cặp đôi!';document.getElementById('btn-show').style.display='block';}else{btn.disabled=false;btn.textContent='🎲 BỐC THĂM CẶP '+(drawCnt+1);document.getElementById('dcnt').textContent='Còn '+avM.length+' cặp chưa bốc';}});}
+
+/* ── SCORE INPUT (format: 11:7) ── */
+function ps(inp){
+  var id=inp.dataset.id;
+  var val=inp.value.trim();
+  var m=val.match(/^(\d+)\s*[:\-]\s*(\d+)$/);
+  if(m){
+    var n1=parseInt(m[1]),n2=parseInt(m[2]);
+    scores[id+'_1']=n1;scores[id+'_2']=n2;scores[id+'_raw']=n1+':'+n2;
+    inp.value=n1+':'+n2;
+    inp.classList.add('sv');inp.classList.remove('si');
+  }else if(!val){
+    delete scores[id+'_1'];delete scores[id+'_2'];delete scores[id+'_raw'];
+    inp.classList.remove('sv','si');
+  }else{
+    inp.classList.add('si');inp.classList.remove('sv');
+  }
+  renderStandings();updateBK();
 }
 
-function doDrawPair(){
-  if(isAnimating||!avM.length)return;
-  if(isEditing)toggleEdit();
-  var mi=Math.floor(Math.random()*avM.length),fi=Math.floor(Math.random()*avF.length);
-  var finalM=avM[mi],finalF=avF[fi];
-  var mIdx=MALES.indexOf(finalM),fIdx=FEMALES.indexOf(finalF);
-  var btn=document.getElementById('btn-draw');
-  btn.disabled=true;
-  btn.classList.add('btn-loading');
-  isAnimating=true;
-
-  runSpin(finalM,finalF,function(){
-    isAnimating=false;
-    drawCnt++;
-    var g=drawCnt<=4?'A':'B';
-    avM.splice(mi,1);avF.splice(fi,1);
-    pairs.push({num:drawCnt,m:finalM,f:finalF,g:g,mi:mIdx,fi:fIdx});
-    /* Cross out */
-    var pm=document.getElementById('pm'+mIdx),pf=document.getElementById('pf'+fIdx);
-    function crossOut(el,name){
-      if(!el)return;el.className='pi pid';
-      var ic=el.querySelector('.picon');if(ic)ic.className='picon icond';
-      var inp=el.querySelector('input'),ei=el.querySelector('.pedit-icon');
-      if(inp)el.removeChild(inp);if(ei)el.removeChild(ei);
-      var sp=document.createElement('span');sp.className='pname-drawn';sp.textContent=name;el.appendChild(sp);
-    }
-    crossOut(pm,finalM);crossOut(pf,finalF);
-    /* Pair card */
-    var card=document.createElement('div');
-    card.className='pair-card '+(g==='A'?'pca':'pcb');
-    card.innerHTML='<div class="pnum '+(g==='A'?'pna':'pnb')+'">'+drawCnt+'</div>'
-      +'<div class="pinfo"><div class="pnames"><span class="pm">'+finalM+'</span>'
-      +'<span style="color:#aaa;margin:0 5px;font-size:11px">+</span>'
-      +'<span class="pf">'+finalF+'</span></div>'
-      +'<div class="ptag">Bảng '+g+' — '+(g==='A'?'Sân 1':'Sân 2')+' ('+g+(g==='A'?drawCnt:drawCnt-4)+')</div></div>'
-      +'<span class="pbadge '+(g==='A'?'pba':'pbb')+'">BẢNG '+g+'</span>';
-    document.getElementById('pairs-out').appendChild(card);
-    /* Buttons */
-    btn.classList.remove('btn-loading');
-    if(!avM.length){btn.disabled=true;btn.textContent='✓ ĐÃ BỐC THĂM XONG';document.getElementById('dcnt').textContent='Đã ghép đủ 8 cặp đôi!';document.getElementById('btn-show').style.display='block';}
-    else{btn.disabled=false;btn.textContent='🎲 BỐC THĂM CẶP '+(drawCnt+1);document.getElementById('dcnt').textContent='Còn '+avM.length+' cặp chưa bốc';}
-  });
+function matchScore(id,xc){
+  var raw=scores[id+'_raw']||'';
+  var vc=raw?(raw.match(/^\d+:\d+$/)?'sv':'si'):'';
+  var xs='';
+  if(xc==='sinb')xs='color:#4a148c;border-color:#ce93d8';
+  else if(xc==='sinc')xs='color:#b71c1c;border-color:#ef9a9a';
+  else if(xc==='sinbg')xs='color:#5c1a1a;border-color:#f8bbd0';
+  return '<div class="stw"><input class="st '+(vc||'')+'" type="text" value="'+raw+'" placeholder="11:7" style="'+xs+'" data-id="'+id+'" oninput="ps(this)" onclick="this.select()"><div class="st-hint">vd: 11:7</div></div>';
 }
 
-/* ── SCORES & STANDINGS ── */
-function setScore(id,t,v){scores[id+'_'+t]=v;renderStandings();updateKO();}
+/* ── STANDINGS ── */
 function calcStand(slots,matches){
-  var s={};slots.forEach(function(sl){s[sl]={sl:sl,w:0,l:0,pts:0,gf:0,ga:0,pl:0};});
+  var s={};slots.forEach(function(sl){s[sl]={sl:sl,w:0,l:0,pts:0,gf:0,ga:0,pl:0,scores:[]};});
   matches.forEach(function(m){
-    var v1=scores[m.id+'_1'],v2=scores[m.id+'_2'],n1=parseInt(v1),n2=parseInt(v2);
-    if(!isNaN(n1)&&!isNaN(n2)&&String(v1)!==''&&String(v2)!==''){
+    var n1=scores[m.id+'_1'],n2=scores[m.id+'_2'];
+    if(n1!==undefined&&n2!==undefined){
       s[m.t1].gf+=n1;s[m.t1].ga+=n2;s[m.t1].pl++;
       s[m.t2].gf+=n2;s[m.t2].ga+=n1;s[m.t2].pl++;
       if(n1>n2){s[m.t1].w++;s[m.t1].pts+=2;s[m.t2].l++;}
       else if(n2>n1){s[m.t2].w++;s[m.t2].pts+=2;s[m.t1].l++;}
     }
   });
-  return Object.values(s).sort(function(a,b){return(b.pts-a.pts)||(b.gf-b.ga-a.gf+a.ga)||(b.gf-a.gf);});
-}
-function getR(g,r){
-  var sl=g==='A'?['A1','A2','A3','A4']:['B1','B2','B3','B4'];
-  var st=calcStand(sl,g==='A'?GA:GB);
-  return st[r-1]?st[r-1].sl:(r===1?'#1'+g:'#2'+g);
-}
-function getWinner(id,s1,s2){
-  var v1=parseInt(scores[id+'_1']),v2=parseInt(scores[id+'_2']);
-  if(!isNaN(v1)&&!isNaN(v2))return v1>v2?s1:v2>v1?s2:null;return null;
-}
-function matchScore(id,cls){
-  cls=cls||'';
-  return '<div class="sp">'
-    +'<input class="sin '+cls+'" type="number" min="0" max="99" value="'+(scores[id+'_1']||'')+'" placeholder="—" oninput="setScore(''+id+'',1,this.value)" onclick="this.select()">'
-    +'<span class="scl">:</span>'
-    +'<input class="sin '+cls+'" type="number" min="0" max="99" value="'+(scores[id+'_2']||'')+'" placeholder="—" oninput="setScore(''+id+'',2,this.value)" onclick="this.select()">'
-    +'</div>';
+  return Object.values(s).sort(function(a,b){return(b.pts-a.pts)||(b.gf-b.ga-a.gf+a.ga)||(b.gf-a.gf)||(a.sl<b.sl?-1:1);});
 }
 
-/* ── BRACKET ── */
+function getR(g,r){var sl=g==='A'?['A1','A2','A3','A4']:['B1','B2','B3','B4'];var st=calcStand(sl,g==='A'?GA:GB);return st[r-1]?st[r-1].sl:(r===1?'#1'+g:'#2'+g);}
+
+function getWinner(id,s1,s2){var v1=scores[id+'_1'],v2=scores[id+'_2'];if(v1!==undefined&&v2!==undefined)return v1>v2?s1:v2>v1?s2:null;return null;}
+function getLoser(id,s1,s2){var w=getWinner(id,s1,s2);if(!w)return null;return w===s1?s2:s1;}
+
+function upd(id,txt){var el=document.getElementById(id);if(el)el.textContent=txt;}
+
+function updateBK(){
+  var r1A=getR('A',1),r2A=getR('A',2),r1B=getR('B',1),r2B=getR('B',2);
+  /* BK teams */
+  upd('bk1-team1',pairName(r1A));upd('bk1-team2',pairName(r2B));
+  upd('bk2-team1',pairName(r1B));upd('bk2-team2',pairName(r2A));
+  /* BK winners */
+  var bk1w=getWinner('bk1',r1A,r2B),bk1l=getLoser('bk1',r1A,r2B);
+  var bk2w=getWinner('bk2',r1B,r2A),bk2l=getLoser('bk2',r1B,r2A);
+  upd('bk1-winner-label',bk1w?'🏆 Thắng: '+pairName(bk1w):'');
+  upd('bk2-winner-label',bk2w?'🏆 Thắng: '+pairName(bk2w):'');
+  /* CK */
+  upd('ck-team1',bk1w?pairName(bk1w):'Thắng Bán Kết 1');
+  upd('ck-team2',bk2w?pairName(bk2w):'Thắng Bán Kết 2');
+  /* HCĐ */
+  upd('hcd-team1',bk1l?pairName(bk1l):'Thua Bán Kết 1');
+  upd('hcd-team2',bk2l?pairName(bk2l):'Thua Bán Kết 2');
+  /* CK winner */
+  var ckw=getWinner('ck',bk1w,bk2w);
+  upd('ck-winner-label',ckw?'🏆 VÔ ĐỊCH: '+pairName(ckw):'');
+  /* HCĐ winner */
+  var hcdw=getWinner('hcd',bk1l,bk2l);
+  upd('hcd-winner-label',hcdw?'🥉 Hạng Ba: '+pairName(hcdw):'');
+}
+
+function renderStandings(){
+  var stA=calcStand(['A1','A2','A3','A4'],GA),stB=calcStand(['B1','B2','B3','B4'],GB);
+  function tH(st,g){
+    var totalMatches=6;
+    var rows=st.map(function(s,i){
+      var hsDiff=s.gf-s.ga;
+      var rankCls=i===0?'rk1':i===1?'rk2':i===2?'rk3':'';
+      return '<tr class="'+rankCls+'">'
+        +'<td><span class="rank-num" style="color:'+(i===0?'#f9a825':i===1?'#1a5c3a':i===2?'#1565c0':'#999')+'">'+( i+1)+'</span></td>'
+        +'<td class="tdl2">'
+          +'<span style="font-size:9px;color:#aaa;font-weight:400">'+s.sl+' </span>'
+          +pairName(s.sl)
+          +(i<2?'<span class="adv">→ BK</span>':'')
+        +'</td>'
+        +'<td>'+s.pl+' / 3</td>'
+        +'<td style="color:#1a5c3a;font-weight:700;font-size:14px">'+s.w+'</td>'
+        +'<td style="color:#c62828;font-size:13px">'+s.l+'</td>'
+        +'<td style="font-size:16px;font-weight:700;color:'+(i===0?'#f9a825':i===1?'#1a5c3a':'#555')+'">'+s.pts+'</td>'
+        +'<td style="color:'+(hsDiff>0?'#1a5c3a':hsDiff<0?'#c62828':'#888')+';font-weight:600">'+(hsDiff>0?'+':'')+hsDiff+'</td>'
+        +'<td style="font-size:11px;color:#888">'+s.gf+' — '+s.ga+'</td>'
+        +'</tr>';
+    }).join('');
+    return '<div class="stcard">'
+      +'<div class="sthdr sthdr-'+g.toLowerCase()+'">'
+        +'<span>📊 XẾP HẠNG BẢNG '+g+' ('+(g==='A'?'Sân 1':'Sân 2')+')</span>'
+        +'<span style="font-size:10px;font-weight:400;opacity:.8;margin-left:auto">Thắng=2đ, Thua=0đ</span>'
+      +'</div>'
+      +'<table class="sttbl"><thead><tr>'
+        +'<th style="width:35px">XH</th><th>Đôi</th><th>Đã đấu</th>'
+        +'<th style="color:#1a5c3a">Thắng</th><th style="color:#c62828">Thua</th>'
+        +'<th>Điểm</th><th>Hiệu số</th><th>Tổng game</th>'
+      +'</tr></thead><tbody>'+rows+'</tbody></table></div>';
+  }
+  document.getElementById('standings').innerHTML=tH(stA,'A')+tH(stB,'B');
+  updateBK();
+}
+
+/* ── BRACKET TABLE (Group Stage) ── */
 function buildBracket(){
   var t=document.getElementById('btable');
   var h='<thead><tr><th class="ch chl" rowspan="2">LƯỢT</th>';
-  h+='<th class="ch cha" colspan="2">SÂN 1 — BẢNG A</th><th class="ch chas">TS</th>';
-  h+='<th class="ch chb" colspan="2">SÂN 2 — BẢNG B</th><th class="ch chbs">TS</th>';
-  h+='<th class="ch chbk" colspan="2">BÁN KẾT</th><th class="ch chbks">TS</th>';
-  h+='<th class="ch chck" colspan="2">CHUNG KẾT</th><th class="ch chcks">TS</th></tr><tr>';
-  ['Đôi 1','Đôi 2','game','Đôi 1','Đôi 2','game','Cặp 1','Cặp 2','game','Cặp 1','Cặp 2','game'].forEach(function(lbl,i){
-    var cls=['cha','cha','chas','chb','chb','chbs','chbk','chbk','chbks','chck','chck','chcks'][i];
+  h+='<th class="ch cha" colspan="2">SÂN 1 — BẢNG A</th><th class="ch chas">TỶ SỐ</th>';
+  h+='<th class="ch chb" colspan="2">SÂN 2 — BẢNG B</th><th class="ch chbs">TỶ SỐ</th>';
+  h+='</tr><tr>';
+  ['Đôi 1','Đôi 2','nhập: 11:7','Đôi 1','Đôi 2','nhập: 11:7'].forEach(function(lbl,i){
+    var cls=['cha','cha','chas','chb','chb','chbs'][i];
     h+='<th class="ch '+cls+'" style="font-size:10px;font-weight:400">'+lbl+'</th>';
   });
   h+='</tr></thead><tbody>';
-  var r1A=getR('A',1),r2A=getR('A',2),r1B=getR('B',1),r2B=getR('B',2);
-  var bk1w=getWinner('bk1',r1A,r2B),bk2w=getWinner('bk2',r1B,r2A);
   for(var ri=0;ri<SCHED.length;ri++){
     var rd=SCHED[ri],l=rd.l,s1=rd.s1,s2=rd.s2;
     h+='<tr style="border-top:2px solid #a5d6a7">';
@@ -580,61 +534,20 @@ function buildBracket(){
     h+='<td class="tdt tdtb" style="border-bottom:1px dashed #f8bbd0"><span class="sl" style="color:#e91e63">'+s2.t1+'</span><span class="nm" style="color:#5c1a1a">'+pairName(s2.t1)+'</span></td>';
     h+='<td class="tdt tdtb" style="border-bottom:1px dashed #f8bbd0"><span class="sl" style="color:#e91e63">'+s2.t2+'</span><span class="nm" style="color:#5c1a1a">'+pairName(s2.t2)+'</span></td>';
     h+='<td class="tds tdsb" rowspan="2">'+matchScore(s2.id,'sinbg')+'</td>';
-    if(ri===0){
-      h+='<td class="tdb bktop" rowspan="3" style="vertical-align:bottom;padding-bottom:8px"><span class="bsl">#1 Bảng A →</span><span class="bnm" id="bk1t1">'+pairName(r1A)+'</span></td>';
-      h+='<td class="tdbs" rowspan="6">'+matchScore('bk1','sinb')+'</td>';
-      h+='<td class="tdc" rowspan="6" style="vertical-align:bottom;padding-bottom:8px;border-bottom:2px solid #c62828!important"><span class="csl">Thắng BK1 →</span><span class="cnm" id="ckt1">'+(bk1w?pairName(bk1w):'(sau bán kết)')+'</span></td>';
-      h+='<td class="tdcs" rowspan="12">'+matchScore('ck','sinc')+'</td>';
-    }else if(ri===3){
-      h+='<td class="tdb bktop" rowspan="3" style="vertical-align:bottom;padding-bottom:8px"><span class="bsl">#1 Bảng B →</span><span class="bnm" id="bk2t1">'+pairName(r1B)+'</span></td>';
-      h+='<td class="tdbs" rowspan="6">'+matchScore('bk2','sinb')+'</td>';
-      h+='<td class="tdc" rowspan="6" style="vertical-align:top;padding-top:8px;border-top:2px solid #c62828!important"><span class="csl">Thắng BK2 →</span><span class="cnm" id="ckt2">'+(bk2w?pairName(bk2w):'(sau bán kết)')+'</span></td>';
-    }
     h+='</tr><tr>';
     h+='<td class="tdt btm" style="color:#aaa;font-size:11px;padding:4px 8px"><span class="sl">vs</span></td><td class="tdt btm"></td>';
     h+='<td class="tdt tdtb btm" style="color:#aaa;font-size:11px;padding:4px 8px"><span class="sl" style="color:#e91e63">vs</span></td><td class="tdt tdtb btm"></td>';
-    if(ri===2)h+='<td class="tdb bkbot" style="vertical-align:top;padding-top:8px"><span class="bsl">#2 Bảng B →</span><span class="bnm" id="bk1t2">'+pairName(r2B)+'</span></td>';
-    else if(ri===5)h+='<td class="tdb bkbot" style="vertical-align:top;padding-top:8px"><span class="bsl">#2 Bảng A →</span><span class="bnm" id="bk2t2">'+pairName(r2A)+'</span></td>';
     h+='</tr>';
   }
   h+='</tbody>';t.innerHTML=h;
 }
-function updateKO(){
-  var r1A=getR('A',1),r2A=getR('A',2),r1B=getR('B',1),r2B=getR('B',2);
-  var bk1w=getWinner('bk1',r1A,r2B),bk1l=bk1w?(bk1w===r1A?r2B:r1A):null;
-  var bk2w=getWinner('bk2',r1B,r2A),bk2l=bk2w?(bk2w===r1B?r2A:r1B):null;
-  function upd(id,t){var el=document.getElementById(id);if(el)el.textContent=t;}
-  upd('bk1t1',pairName(r1A));upd('bk1t2',pairName(r2B));
-  upd('bk2t1',pairName(r1B));upd('bk2t2',pairName(r2A));
-  upd('ckt1',bk1w?pairName(bk1w):'Thắng BK Sân 1');
-  upd('ckt2',bk2w?pairName(bk2w):'Thắng BK Sân 2');
-  upd('hcd-t1',bk1l?pairName(bk1l):'Thua BK Sân 1');
-  upd('hcd-t2',bk2l?pairName(bk2l):'Thua BK Sân 2');
-}
-function renderStandings(){
-  var stA=calcStand(['A1','A2','A3','A4'],GA),stB=calcStand(['B1','B2','B3','B4'],GB);
-  function tH(st,g){
-    return '<div class="stcard"><div class="sthdr sthdr-'+g.toLowerCase()+'">📊 XẾP HẠNG BẢNG '+g+' ('+(g==='A'?'Sân 1':'Sân 2')+') <span style="font-size:10px;font-weight:400;opacity:.8">— Thắng=2đ</span></div>'
-      +'<table class="sttbl"><thead><tr><th>XH</th><th>Đôi</th><th>Đã đấu</th><th>Thắng</th><th>Thua</th><th>Điểm</th><th>Hiệu số</th></tr></thead><tbody>'
-      +st.map(function(s,i){return'<tr class="'+(i===0?'rk1':i===1?'rk2':'')+'">'
-        +'<td style="font-weight:700;color:'+(i===0?'#f9a825':i===1?'#1a5c3a':'#666')+'">'+( i+1)+'</td>'
-        +'<td class="tdl2"><span style="font-size:9px;color:#aaa">'+s.sl+': </span>'+pairName(s.sl)+(i<2?'<span class="adv">BK</span>':'')+'</td>'
-        +'<td>'+s.pl+'</td><td style="color:#1a5c3a;font-weight:700">'+s.w+'</td><td style="color:#c62828">'+s.l+'</td>'
-        +'<td style="font-size:15px;font-weight:700">'+s.pts+'</td>'
-        +'<td style="color:'+(s.gf-s.ga>=0?'#1a5c3a':'#c62828')+'">'+(s.gf-s.ga>=0?'+':'')+(s.gf-s.ga)+'</td></tr>';
-      }).join('')+'</tbody></table></div>';
-  }
-  document.getElementById('standings').innerHTML=tH(stA,'A')+tH(stB,'B');updateKO();
-}
+
 function showTourney(){
   document.getElementById('draw').style.display='none';
   document.getElementById('tourney').style.display='block';
   buildBracket();renderStandings();
 }
-function backDraw(){
-  document.getElementById('tourney').style.display='none';
-  document.getElementById('draw').style.display='block';
-}
+function backDraw(){document.getElementById('tourney').style.display='none';document.getElementById('draw').style.display='block';}
 
 </script>
 </body>
