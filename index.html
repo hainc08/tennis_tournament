@@ -1193,6 +1193,21 @@
         transform: translateX(100%)
       }
     }
+
+    @media print {
+      body { background: #fff; min-width: 100%; margin: 0; padding: 0; }
+      #hdr { position: static; }
+      #draw, #spin-overlay, .legend, .edit-banner { display: none !important; }
+      #tourney { display: block !important; }
+      
+      .bwrap { page-break-after: always; break-after: page; padding-top: 20px; }
+      .stgrid { page-break-after: always; break-after: page; padding-top: 20px; display: grid; }
+      .stcard { margin-bottom: 20px; }
+      .bk-section { padding-top: 20px; border-top: none; }
+      
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      input.st { border: 1px solid #ccc !important; background: transparent !important; }
+    }
   </style>
 </head>
 
@@ -1283,12 +1298,16 @@
           style="background:#e8f5e9;color:#0d4d2a;padding:1px 6px;border-radius:4px;font-family:monospace">11:7</span>
         &nbsp;—&nbsp; Bảng xếp hạng tự cập nhật
       </div>
-      <button class="bkbtn" onclick="backDraw()">← Bốc thăm</button>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <button class="bkbtn" onclick="window.print()" style="margin-left:0; background:#1565c0;">🖨️ In PDF</button>
+        <button class="bkbtn" onclick="backDraw()" style="margin-left:0;">← Bốc thăm</button>
+      </div>
     </div>
 
     <!-- BRACKET TABLE -->
-    <div class="bwrap">
-      <table class="bt" id="btable"></table>
+    <div class="bwrap" style="display:flex; flex-direction:column; gap:24px;">
+      <table class="bt" id="btable-a" style="min-width:unset; width:100%;"></table>
+      <table class="bt" id="btable-b" style="min-width:unset; width:100%;"></table>
     </div>
 
     <!-- STANDINGS (auto-update) -->
@@ -1454,8 +1473,40 @@
     /* ── DRAW ── */
     function pairName(slot) { var g = slot[0], n = parseInt(slot[1]) - 1, idx = g === 'A' ? n : 4 + n; if (idx >= pairs.length) return 'Đôi ' + slot; var p = pairs[idx]; return p.m + ' & ' + p.f; }
 
+    function hasValidPairing(mArr, fArr) {
+      if(mArr.length === 0) return true;
+      var m = mArr[0];
+      var mIdx = MALES.indexOf(m);
+      for(var i=0; i<fArr.length; i++) {
+         var f = fArr[i];
+         var fIdx = FEMALES.indexOf(f);
+         if(mIdx !== -1 && mIdx === fIdx && mIdx < 7) continue;
+         var nextF = fArr.slice(); nextF.splice(i, 1);
+         if(hasValidPairing(mArr.slice(1), nextF)) return true;
+      }
+      return false;
+    }
+
     function doDrawPair() {
-      if (isAnimating || !avM.length) return; if (isEditing) toggleEdit(); var mi = Math.floor(Math.random() * avM.length), fi = Math.floor(Math.random() * avF.length); var finalM = avM[mi], finalF = avF[fi]; var mIdx = MALES.indexOf(finalM), fIdx = FEMALES.indexOf(finalF); var btn = document.getElementById('btn-draw'); btn.disabled = true; btn.classList.add('btn-loading'); isAnimating = true;
+      if (isAnimating || !avM.length) return; if (isEditing) toggleEdit(); 
+      
+      var mi = Math.floor(Math.random() * avM.length);
+      var finalM = avM[mi];
+      var valid_fi = [];
+      for(var j=0; j<avF.length; j++) {
+        var f = avF[j];
+        var mIdxCheck = MALES.indexOf(finalM), fIdxCheck = FEMALES.indexOf(f);
+        if (mIdxCheck !== -1 && mIdxCheck === fIdxCheck && mIdxCheck < 7) continue; // Couple!
+        var remM = avM.slice(); remM.splice(mi, 1);
+        var remF = avF.slice(); remF.splice(j, 1);
+        if (hasValidPairing(remM, remF)) valid_fi.push(j);
+      }
+      
+      var fi = valid_fi.length > 0 ? valid_fi[Math.floor(Math.random() * valid_fi.length)] : Math.floor(Math.random() * avF.length);
+      var finalF = avF[fi];
+      var mIdx = MALES.indexOf(finalM), fIdx = FEMALES.indexOf(finalF);
+      
+      var btn = document.getElementById('btn-draw'); btn.disabled = true; btn.classList.add('btn-loading'); isAnimating = true;
       runSpin(finalM, finalF, function () {
         isAnimating = false; drawCnt++; var g = drawCnt <= 4 ? 'A' : 'B'; avM.splice(mi, 1); avF.splice(fi, 1); pairs.push({ num: drawCnt, m: finalM, f: finalF, g: g, mi: mIdx, fi: fIdx });
         function crossOut(el, name) { if (!el) return; el.className = 'pi pid'; var ic = el.querySelector('.picon'); if (ic) ic.className = 'picon icond'; var inp = el.querySelector('input'), ei = el.querySelector('.pedit-icon'); if (inp) el.removeChild(inp); if (ei) el.removeChild(ei); var sp = document.createElement('span'); sp.className = 'pname-drawn'; sp.textContent = name; el.appendChild(sp); }
@@ -1580,32 +1631,37 @@
 
     /* ── BRACKET TABLE (Group Stage) ── */
     function buildBracket() {
-      var t = document.getElementById('btable');
-      var h = '<thead><tr><th class="ch chl" rowspan="2">LƯỢT</th>';
-      h += '<th class="ch cha" colspan="2">SÂN 1 — BẢNG A</th><th class="ch chas">TỶ SỐ</th>';
-      h += '<th class="ch chb" colspan="2">SÂN 2 — BẢNG B</th><th class="ch chbs">TỶ SỐ</th>';
-      h += '</tr><tr>';
-      ['Đôi 1', 'Đôi 2', 'nhập: 11:7', 'Đôi 1', 'Đôi 2', 'nhập: 11:7'].forEach(function (lbl, i) {
-        var cls = ['cha', 'cha', 'chas', 'chb', 'chb', 'chbs'][i];
-        h += '<th class="ch ' + cls + '" style="font-size:10px;font-weight:400">' + lbl + '</th>';
-      });
-      h += '</tr></thead><tbody>';
+      var tA = document.getElementById('btable-a');
+      var tB = document.getElementById('btable-b');
+      
+      var hA = '<thead><tr><th class="ch chl" rowspan="2">LƯỢT</th><th class="ch cha" colspan="2">SÂN 1 — BẢNG A</th><th class="ch chas">TỶ SỐ</th></tr><tr><th class="ch cha" style="font-size:10px;font-weight:400">Đôi 1</th><th class="ch cha" style="font-size:10px;font-weight:400">Đôi 2</th><th class="ch chas" style="font-size:10px;font-weight:400">nhập: 11:7</th></tr></thead><tbody>';
+      var hB = '<thead><tr><th class="ch chl" rowspan="2" style="background:#3e1616">LƯỢT</th><th class="ch chb" colspan="2">SÂN 2 — BẢNG B</th><th class="ch chbs">TỶ SỐ</th></tr><tr><th class="ch chb" style="font-size:10px;font-weight:400">Đôi 1</th><th class="ch chb" style="font-size:10px;font-weight:400">Đôi 2</th><th class="ch chbs" style="font-size:10px;font-weight:400">nhập: 11:7</th></tr></thead><tbody>';
+
       for (var ri = 0; ri < SCHED.length; ri++) {
         var rd = SCHED[ri], l = rd.l, s1 = rd.s1, s2 = rd.s2;
-        h += '<tr style="border-top:2px solid #a5d6a7">';
-        h += '<td class="tdl" rowspan="2">L' + l + '<br><span style="font-size:9px;font-weight:400;color:#888">Lượt ' + l + '</span></td>';
-        h += '<td class="tdt" style="border-bottom:1px dashed #c8e6c9"><span class="sl">' + s1.t1 + '</span><span class="nm">' + pairName(s1.t1) + '</span></td>';
-        h += '<td class="tdt" style="border-bottom:1px dashed #c8e6c9"><span class="sl">' + s1.t2 + '</span><span class="nm">' + pairName(s1.t2) + '</span></td>';
-        h += '<td class="tds" rowspan="2">' + matchScore(s1.id) + '</td>';
-        h += '<td class="tdt tdtb" style="border-bottom:1px dashed #f8bbd0"><span class="sl" style="color:#e91e63">' + s2.t1 + '</span><span class="nm" style="color:#5c1a1a">' + pairName(s2.t1) + '</span></td>';
-        h += '<td class="tdt tdtb" style="border-bottom:1px dashed #f8bbd0"><span class="sl" style="color:#e91e63">' + s2.t2 + '</span><span class="nm" style="color:#5c1a1a">' + pairName(s2.t2) + '</span></td>';
-        h += '<td class="tds tdsb" rowspan="2">' + matchScore(s2.id, 'sinbg') + '</td>';
-        h += '</tr><tr>';
-        h += '<td class="tdt btm" style="color:#aaa;font-size:11px;padding:4px 8px"><span class="sl">vs</span></td><td class="tdt btm"></td>';
-        h += '<td class="tdt tdtb btm" style="color:#aaa;font-size:11px;padding:4px 8px"><span class="sl" style="color:#e91e63">vs</span></td><td class="tdt tdtb btm"></td>';
-        h += '</tr>';
+        
+        // Group A Row
+        hA += '<tr style="border-top:2px solid #a5d6a7">';
+        hA += '<td class="tdl" rowspan="2">L' + l + '<br><span style="font-size:9px;font-weight:400;color:#888">Lượt ' + l + '</span></td>';
+        hA += '<td class="tdt" style="border-bottom:1px dashed #c8e6c9"><span class="sl">' + s1.t1 + '</span><span class="nm">' + pairName(s1.t1) + '</span></td>';
+        hA += '<td class="tdt" style="border-bottom:1px dashed #c8e6c9"><span class="sl">' + s1.t2 + '</span><span class="nm">' + pairName(s1.t2) + '</span></td>';
+        hA += '<td class="tds" rowspan="2">' + matchScore(s1.id) + '</td>';
+        hA += '</tr><tr>';
+        hA += '<td class="tdt btm" style="color:#aaa;font-size:11px;padding:4px 8px"><span class="sl">vs</span></td><td class="tdt btm"></td>';
+        hA += '</tr>';
+
+        // Group B Row
+        hB += '<tr style="border-top:2px solid #f8bbd0">';
+        hB += '<td class="tdl" rowspan="2" style="background:#fff0f5;color:#5c1a1a">L' + l + '<br><span style="font-size:9px;font-weight:400;color:#888">Lượt ' + l + '</span></td>';
+        hB += '<td class="tdt tdtb" style="border-bottom:1px dashed #f8bbd0"><span class="sl" style="color:#e91e63">' + s2.t1 + '</span><span class="nm" style="color:#5c1a1a">' + pairName(s2.t1) + '</span></td>';
+        hB += '<td class="tdt tdtb" style="border-bottom:1px dashed #f8bbd0"><span class="sl" style="color:#e91e63">' + s2.t2 + '</span><span class="nm" style="color:#5c1a1a">' + pairName(s2.t2) + '</span></td>';
+        hB += '<td class="tds tdsb" rowspan="2">' + matchScore(s2.id, 'sinbg') + '</td>';
+        hB += '</tr><tr>';
+        hB += '<td class="tdt tdtb btm" style="color:#aaa;font-size:11px;padding:4px 8px"><span class="sl" style="color:#e91e63">vs</span></td><td class="tdt tdtb btm"></td>';
+        hB += '</tr>';
       }
-      h += '</tbody>'; t.innerHTML = h;
+      hA += '</tbody>'; tA.innerHTML = hA;
+      hB += '</tbody>'; tB.innerHTML = hB;
     }
 
     function showTourney() {
