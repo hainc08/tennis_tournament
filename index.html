@@ -16,7 +16,7 @@
       font-family: Arial, sans-serif;
       font-size: 12px;
       background: #f0f2f0;
-      min-width: 960px
+      min-width: 320px
     }
 
     #hdr {
@@ -460,7 +460,7 @@
     table.bt {
       border-collapse: collapse;
       white-space: nowrap;
-      min-width: 960px;
+      min-width: 500px;
       width: 100%
     }
 
@@ -1192,6 +1192,22 @@
       100% {
         transform: translateX(100%)
       }
+    }
+
+    @media (max-width: 768px) {
+      #hdr { flex-wrap: wrap; justify-content: center; gap: 10px; }
+      #hdr .logo { display: none; }
+      #hdr .ttl h1 { font-size: 16px; }
+      .pgrid, .pairs-grid, .stgrid, .bk-grid, .ck-grid { grid-template-columns: 1fr; }
+      #spin-box { min-width: 90%; padding: 24px 20px; }
+      .spin-drums { flex-direction: column; gap: 12px; }
+      .spin-plus { transform: rotate(90deg); margin: -10px 0; }
+      .edit-banner { flex-direction: column; align-items: stretch; text-align: center; }
+      .edit-hint { margin-left: 0; }
+      .legend { flex-direction: column; align-items: stretch; gap: 10px; }
+      .legend > div[style*="margin-left:auto"] { margin-left: 0 !important; justify-content: center; margin-top: 10px; }
+      .bkbtn { padding: 10px; font-size: 13px; flex: 1; }
+      #btn-draw { width: 100%; padding: 14px 20px; }
     }
 
     @media print {
